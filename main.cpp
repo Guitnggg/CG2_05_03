@@ -1801,7 +1801,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	float* inputTransformSphere[3] = { &transformSphere.translate.x,&transformSphere.translate.y,&transformSphere.translate.z };
 	float* inputRotateSphere[3] = { &transformSphere.rotate.x,&transformSphere.rotate.y,&transformSphere.rotate.z };
 	float* inputScaleSphere[3] = { &transformSphere.scale.x,&transformSphere.scale.y,&transformSphere.scale.z };
-	float textureChange = 0;
+	float changeTexture = 0;
 
 
 	float* inputMaterialLigth[3] = { &directionalLightSphereData->color.x,&directionalLightSphereData->color.y,&directionalLightSphereData->color.z };
@@ -1929,7 +1929,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			ImGui::InputFloat3("ScaleSphere", *inputScaleSphere);
 			ImGui::SliderFloat3("SliderScaleSphere", *inputScaleSphere, 0.5f, 5.0f);
 
-			ImGui::InputFloat("SphereTexture", &textureChange);
+			ImGui::InputFloat("SphereTexture", &changeTexture);
 
 
 
@@ -2048,7 +2048,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			commandList->SetGraphicsRootConstantBufferView(1, wvpResourceSphere->GetGPUVirtualAddress());
 
 
-			if (textureChange == 0) {
+			if (changeTexture == 0) {
 				commandList->SetGraphicsRootDescriptorTable(2, textureSrvHandleGPU);
 			}
 			else {
