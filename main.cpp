@@ -718,10 +718,6 @@ void DrawSphere(VertexData* vertexDataSphere) {
 				0.0f,0.0f,-1.0f
 			};
 
-
-
-
-			//最初点
 			vertexDataSphere[start + 0] = vertA;
 			vertexDataSphere[start + 1] = vertB;
 			vertexDataSphere[start + 2] = vertC;
