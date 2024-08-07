@@ -72,6 +72,21 @@ void log(const std::string& message) {
 	OutputDebugStringA(message.c_str());
 }
 
+class ResourceObject {
+public:
+	ResourceObject(Microsoft::WRL::ComPtr<ID3D12Resource>resource)
+		:resource_(resource)
+	{}
+	~ResourceObject() {
+		if (resource_) {
+			resource_->Release();
+		}
+	}
+	Microsoft::WRL::ComPtr<ID3D12Resource> Get() { return resource_; }
+private:
+	Microsoft::WRL::ComPtr<ID3D12Resource> resource_;
+};
+
 //ComplierShader関数
 IDxcBlob* CompileShader(
 	const std::wstring& filePath,
